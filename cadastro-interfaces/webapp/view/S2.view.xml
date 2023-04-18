@@ -1,0 +1,139 @@
+<mvc:View 
+    controllerName="yellow.com.cadastrointerfaces.controller.S2"
+        xmlns:mvc="sap.ui.core.mvc" 
+        displayBlock="true"
+	    xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m"
+    >
+    <Page id="Interface" navButtonPress="onNavBack">
+    <ObjectHeader
+        id="oh1"
+        responsive="false"
+        icon="sap-icon://share-2"
+        title="{IntName}"
+        backgroundDesign="Translucent"
+        class="sapUiResponsivePadding--header" >
+        <ObjectAttribute id="IdAttributeInterfaceId" title="Id" text="{IntId}" />
+        <ObjectAttribute id="IdAttributeInterfacDescr" title="Descrição" text="{IntDesc}" />  
+        <ObjectAttribute id="IdAttributeInterfacComp" title="Empresa" text="{CompanyName}" />
+		<statuses>
+			<ObjectStatus
+				id="idObjectStatusInbound"
+				title="Inbound"
+				text="{Origem}"
+				icon="sap-icon://cause"
+				state="Warning"
+			/>
+			<ObjectStatus 
+				id="idObjectStatusOutbound"
+				title="Outbound"
+				text="{Destino}"
+				icon="sap-icon://action"
+				state="Success"
+			/>
+		</statuses>
+    </ObjectHeader>
+      <VBox id="box" class="sapUiSmallMargin">
+		<f:SimpleForm id="idFormDetalhesInterface"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Detalhes da Interface"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="8"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+            <f:toolbar>
+				<Toolbar id="idToolbarForm">
+					<ToolbarSpacer id="idToolbarSpacer" />
+					<Button 
+                        id="ButtonEdit" 
+                        icon="sap-icon://edit" 
+                        text="Editar" 
+                        press="onPressEditButton"
+                    />
+					<Button 
+                        id="ButtonExibirRfc"  
+                        icon="sap-icon://detail-view" 
+                        text="RFC" 
+						press="onPressExibirRfc"
+                    />
+				</Toolbar>
+			</f:toolbar>
+			<f:content>
+				<!-- Dados Interface -->
+				<core:Title id="IdTitleInterface" text="Detalhes Interface" />
+				<Label id="IdLabelNomeInterface" text="Interface" />
+				<Text id="IdTextInterface" text="{IntName}" />
+				<Label id="IdLabelDescricaoInterface" text="Interface" />
+				<Text id="IdTextDescricaoInterface" text="{IntDesc}" />
+				<Label id="IdLabelLimiteTempoInterfaceCEI" text="Limite de Tempo" />
+				<Text id="IdTextLimiteTempoInterfaceCEI" text="{IntLimiteTemp}"/>
+				<Label id="IdLabelAreaInterfaceCEI" text="Área" />
+				<Text id="IdTextAreaInterfaceCEI" text="{IntfArea}" />
+				
+				<!-- Dados ABAP (CEI) -->
+				<core:Title id="IdTitleABAP" text="Dados da RFC CEI" />
+				<Label id="IdLabelInterfaceCEI" text="RFC CEI" />
+				<Text id="IdTextInterfaceCEI" text="{RfcInt}" />
+				<Label id="IdLabelDescricaoInterfaceCEI" text="Descrição" />
+				<Text id="IdTextDescricaoInterfaceCEI" text="{RfcDesc}" />
+				<Label id="IdLabelFGroupInterfaceCEI" text="Grupo de Funções" />
+				<Text id="IdTextFGroupInterfaceCEI" text="{RfcFgroup}" />
+                <Label id="IdLabelFGroupDescrInterfaceCEI" text="Descrição" />
+				<Text id="IdTextFGroupDescrInterfaceCEI" text="{RfcFgroupDesc}" />
+                
+
+				<!-- Dados ABAP (Cliente) -->
+				<core:Title id="IdTitleCLiente" text="Dados da RFC Cliente" />
+				<Label id="IdLabelInterfaceCliente" text="Dados da RFC Cliente" />
+				<Text id="IdTextInterfaceCliente" text="{RfcExt}" />
+				<Label id="IdLabeDestlInterfaceCliente" text="Destination" />
+                <Text id="IdTextDestlInterfaceCliente" text="{Rfcdest}" />
+				
+				<!-- Dados Endpoint -->
+				<core:Title id="IdTitleEndpoint" text="Endpoint" />
+				<Label id="IdLabeEndpoint" text="Endpoint" />
+                <Text id="IdTextEndpoint" text="{Endpoint}" />
+
+				<!-- Dados SEGW e oAUTH-->
+				<core:Title id="IdTitleService" text="Dados do Serviço Rest CEI" />
+				<Label id="IdLabelService" text="Project SEGW" />
+                <Text id="IdTextlService" text="{Project}" />
+				<Label id="IdLabeloAuthUser" text="User oAuth" />
+                <Text id="IdTextoAuthUser" text="{OauthUser}" />
+				<Label id="IdLabeloAuthPwd" text="Password oAuth" />
+                <Text id="IdTextoAuthPwd" text="{Password}" />
+				<Label id="IdLabeloAuthLinkTokenCode" text="Link geração Código segurança" />
+                <Link 
+					id="IdTextoAuthLinkTokenCode" 
+					text="{TokenUrl}" 
+					href="{TokenUrl}" 
+					target="_blank" 
+					tooltip="Abra em uma janela anonima"
+				/>
+				<Label id="IdLabeloAuthLinkPayload" text="Payload" />		
+				<TextArea 
+					editable="false" 
+					id="idTextAreaPayload" 
+					valueState="Warning" 
+					value="{Payload}"
+					width="100%"
+				/>
+				<Label id="IdLabelTokenCode" text="oAuth2" />	
+				<Text id="IdTextoTokenCode" text="{OauthToken}" />
+
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+    </Page>
+</mvc:View>

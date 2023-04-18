@@ -1,0 +1,63 @@
+<mvc:View
+	controllerName="yellow.com.cadastrointerfaces.controller.S5"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:t="sap.ui.table"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+    >
+        <Page id="DetalheRfc" navButtonPress="onNavBack" >
+            <ObjectHeader
+                id="oh1"
+                responsive="false"
+                icon="sap-icon://share-2"
+                title="{RfcExt}"
+                backgroundDesign="Translucent"
+                class="sapUiResponsivePadding--header" 
+            >
+                <ObjectAttribute id="IdAttributeInterfacDescr" title="Descrição" text="{RfcDesc}" />  
+            </ObjectHeader>
+            <t:TreeTable
+                id="treeTable"
+                selectionMode="Single"
+                enableColumnReordering="false"
+                rows="{path:'Tree>/', parameters: {arrayNames:['type']}}"
+             >
+            <t:extension>
+                    <OverflowToolbar id="OverflowToolbar" style="Clear">
+                        <Title id="title" text="Clothing"/>
+                        <ToolbarSpacer id="ToolbarSpacer"/>
+                        <Button
+                         id="ButtonImportar" 
+                         text="Importar Novamemte" 
+                         press="onPressButtonImportar"
+                         icon="sap-icon://synchronize"
+                        />
+                    </OverflowToolbar>
+                </t:extension>
+            <t:columns>
+
+                <t:Column id="LabelParam" label="Parâmetro">
+                    <t:template>
+                        <Text id="TextParam" text="{Tree>name}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="LabelDecl" label="Declaração">
+                    <t:template>
+                        <Text id="LabelText" text="{Tree>typing}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+                <t:Column id="LabelTipo" label="Tipo">
+                    <t:template>
+                        <Text id="TextTipo" text="{Tree>fieldType}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+
+            </t:columns>
+
+        </t:TreeTable>
+    </Page>
+</mvc:View>

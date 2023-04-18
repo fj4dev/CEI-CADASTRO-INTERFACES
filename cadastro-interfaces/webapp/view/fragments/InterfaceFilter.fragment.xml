@@ -1,0 +1,95 @@
+<c:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:c="sap.ui.core"
+>
+
+<ValueHelpDialog
+		id="InterfaceFilterVH"
+		title="Interface"
+		ok=".onValueHelpOkPress"
+		cancel=".onValueHelpCancelPress"
+		afterClose=".onValueHelpAfterClose"
+		key="IntId"
+		descriptionKey="CompanyCode"
+		supportMultiselect="false"
+	
+		 >
+		
+		<filterBar>
+			<fb:FilterBar id="FilterBarVHInterface" advancedMode="true" search=".onFilterBarSearch" >
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem 
+                        id="GrpItemInterfaceVHEmpresa" 
+						groupName="__$INTERNAL$"
+						name="CompanyCode"
+						label="Empresa"
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="InputInterfaceVHEmpresa"  name="InputCompanyCode" />
+						</fb:control>
+					</fb:FilterGroupItem>
+
+					<fb:FilterGroupItem 
+                        id="GrpItemInterfaceVHInterface" 
+						groupName="__$INTERNAL$"
+						name="IntId"
+						label="Interface"
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="InputInterfaceVHInterface"  name="InputIntId" />
+						</fb:control>
+					</fb:FilterGroupItem>
+
+					<fb:FilterGroupItem
+                        id="GrpItemInterfaceVHEmpresaName" 
+						groupName="__$INTERNAL$"
+						name="NomeEmpresa"
+						label="Nome Empresa"
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="ItemInterfaceVHEmpresaName" name="CompanyName" />
+						</fb:control>
+					</fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        id="GrpItemInterfaceVHIntfName" 
+						groupName="__$INTERNAL$"
+						name="IntName"
+						label="Nome Interf."
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="InputItemInterfaceVHIntfName" name="IntName" />
+						</fb:control>
+					</fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        id="GrpItemInterfaceVHIntfDesc" 
+						groupName="__$INTERNAL$"
+						name="DescInterfacea"
+						label="Descr. Interf."
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="InputemInterfaceVHIntfDesc" name="IntDesc" />
+						</fb:control>
+					</fb:FilterGroupItem>
+                    <fb:FilterGroupItem
+                        id="GrpItemInterfaceVHRfcExt" 
+						groupName="__$INTERNAL$"
+						name="RfcExt"
+						label="RFC Cliente"
+						visibleInFilterBar="true"
+					>
+						<fb:control>
+							<m:Input id="InputemInterfaceVHRfcCliente" name="RfcExt" />
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</c:FragmentDefinition>

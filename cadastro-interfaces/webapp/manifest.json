@@ -1,0 +1,158 @@
+{
+  "_version": "1.17.0",
+  "sap.app": {
+    "id": "yellow.com.cadastrointerfaces",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap-ux/fiori-freestyle-writer:basic",
+      "version": "0.11.15",
+      "toolsId": "4c7584dc-1f36-4e48-9836-bf6d9a74d40b"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZYLW_CADASTRO_INTERFACES_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.73.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "yellow.com.cadastrointerfaces.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "yellow.com.cadastrointerfaces.view",
+        "controlAggregation": "pages",
+        "controlId": "root",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "home",
+          "pattern": "",
+          "target": ["S1"]
+        },
+        {
+          "name": "DetalheInterface",
+          "pattern": "Detalhe/{sId}",
+          "target": ["S1","S2"]
+        },
+        {
+          "name": "CreateInterface",
+          "pattern": "Create",
+          "target": ["S1","S4"]
+        },
+        {
+          "name": "DetalheInterfaceEdit",
+          "pattern": "Editar/{sId}",
+          "target": ["S2","S3"]
+        },
+        {
+          "name": "DetalheRfc",
+          "pattern": "RFC/{sId}",
+          "target": ["S2","S5"]
+        }
+      ],
+      "targets": {
+        "S1": {
+          "viewName": "S1",
+          "viewLevel": 1,
+          "viewId": "Interfaces"
+        },
+        "S2": {
+          "viewName": "S2",
+          "viewLevel": 2,
+          "viewId": "Interface"
+        },
+        "S3": {
+          "viewName": "S3",
+          "viewLevel": 3,
+          "viewId": "InterfaceEdit"
+        },
+        "S4": {
+          "viewName": "S4",
+          "viewLevel": 2,
+          "viewId": "NewInterface"
+        },
+        "S5": {
+          "viewName": "S5",
+          "viewLevel": 3,
+          "viewId": "DetalheRfc"
+        }
+
+      }
+    },
+    "rootView": {
+      "viewName": "yellow.com.cadastrointerfaces.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "S1"
+    }
+  }
+}

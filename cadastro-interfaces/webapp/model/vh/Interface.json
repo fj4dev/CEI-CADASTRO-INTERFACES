@@ -1,0 +1,24 @@
+{
+	"cols": [
+		{
+			"label": "Empresa",
+			"template": "CompanyCode"
+		},
+		{
+			"label": "Nome",
+			"template": "CompanyName"
+		},
+		{
+			"label": "Interface",
+			"template": "IntId"
+		},
+		{
+			"label": "Nome",
+			"template": "IntName"
+		},
+		{
+			"label": "RFC CLiente",
+			"template": "RfcExt"
+		}
+	]
+}

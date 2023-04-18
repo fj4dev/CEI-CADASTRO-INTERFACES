@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: yellow.com.cadastrointerfaces
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: HTTP://vm04.4hub.cloud:50300
+          client: "001"
+        app:
+          name: ZCEI
+          description: ZGW_CAD_INTF
+          package: zcei_dev
+          transport: GWDK900149
