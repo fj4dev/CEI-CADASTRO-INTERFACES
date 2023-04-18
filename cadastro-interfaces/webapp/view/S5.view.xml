@@ -26,7 +26,7 @@
              >
             <t:extension>
                     <OverflowToolbar id="OverflowToolbar" style="Clear">
-                        <Title id="title" text="Clothing"/>
+                        <Title id="title" text="Parâmetros da RFC"/>
                         <ToolbarSpacer id="ToolbarSpacer"/>
                         <Button
                          id="ButtonImportar" 

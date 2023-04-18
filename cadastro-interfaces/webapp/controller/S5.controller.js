@@ -114,7 +114,7 @@ sap.ui.define([
 			for (let oList of aList) {
 
 				// Verifica se o campo pertence a uma estrutura
-				if(oList.StrucTypename && (oList.StrucTypename !== oList.FieldTypename)){
+				if(oList.FieldFromStruc){
 					continue;
 				}
 
@@ -123,7 +123,8 @@ sap.ui.define([
 
 					const aStruct = aList.filter((oImport)=>{ 
 						return ( ( oImport.StrucTypename === oList.StrucTypename ) && 
-								 ( oImport.FieldTypename !== oImport.StrucTypename) );
+								 ( oImport.FieldTypename !== oImport.StrucTypename) &&
+								 ( oImport.FieldTypename !== oImport.TableTypename));
 					});
 
 					const aStructFields = aStruct.map((oStruct)=>{ 
@@ -138,19 +139,27 @@ sap.ui.define([
 					if (oList.TableTypename){
 
 						aStructData.push({
-							name: oList.StrucTypename,
+							name: oList.TableTypename,
+							typing: 'TYPE TABLE OF',
+							fieldType: oList.StrucTypename,
 							type: aStructFields
 						});
 
 						aParam.push({
-							name: oList.TableTypename,
+							name: oList.Parameter,
+							typing: oList.Typing,
+							fieldType: oList.TableTypename,
 							type: aStructData
 						});
+
+						continue;
 					} else{
 
 						// preenche com os campos da estrutura
 						aParam.push({
-							name: oList.StrucTypename,
+							name: oList.Parameter,
+							typing: oList.Typing,
+							fieldType: oList.StrucTypename,
 							type: aStructFields
 						});
 
