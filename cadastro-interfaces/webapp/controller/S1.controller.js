@@ -81,9 +81,10 @@ sap.ui.define([
             onSearch: function(oEvent) {
 
                 let aFilters = [];
-                let oView = this.getView();
-                const sCompanyCode = this.getView().byId("ComboBoxCompany").getSelectedKey();
+                 const sCompanyCode = this.getView().byId("ComboBoxCompany").getSelectedKey();
                 const sInterfaceId= this.getView().byId("InputValueHelpInterface").getValue();
+                const sInterfaceName= this.getView().byId("InputItemInterfaceIntfName").getValue();
+                const sRfcCliente= this.getView().byId("InputemInterfaceRfcCliente").getValue();
 
                 aFilters.push(new Filter({
                     path: "CompanyCode",
@@ -95,6 +96,18 @@ sap.ui.define([
                     path: "IntId",
                     operator: FilterOperator.EQ,
                     value1: sInterfaceId
+                }));
+
+                aFilters.push(new Filter({
+                    path: "IntName",
+                    operator: FilterOperator.EQ,
+                    value1: sInterfaceName
+                }));
+
+                aFilters.push(new Filter({
+                    path: "RfcExt",
+                    operator: FilterOperator.EQ,
+                    value1: sRfcCliente
                 }));
 
                 let oList = this.getView().byId("TableInterfaces");
@@ -221,7 +234,8 @@ sap.ui.define([
 
                 oBinding.filter(aFilters);
                 this.getView().getModel().refresh(true);
-                this.getView().byId("InputValueHelpInterface").setValue(oInterface.IntName);
+                this.getView().byId("InputValueHelpInterface").setValue(sIntId);
+                this.getView().byId("ComboBoxCompany").setSelectedKey(sCompanyCode);
               
                 this._oValueHelpDialog.destroy();
             },
@@ -273,6 +287,13 @@ sap.ui.define([
                 let oRouter = this.getOwnerComponent().getRouter(); 
                 oRouter.navTo("CreateInterface");
                              
+            },
+
+            onEnterFilterField: function(oEvent) {
+
+                const oDummy = {};
+                this.onSearch(oDummy);
+                
             }
         });
     });

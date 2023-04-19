@@ -8,7 +8,8 @@ sap.ui.define([
 	"sap/m/MessageBox",
     "sap/m/MessageToast",
 	"sap/m/Button",
-    "sap/m/ButtonType"
+    "sap/m/ButtonType",
+    "sap/ui/core/routing/History"
 	
 ], function(
 			Controller,
@@ -18,8 +19,10 @@ sap.ui.define([
 			Dialog,
 			DialogType,
 			MessageBox,
+			MessageToast,
 			Button,
-			ButtonType
+			ButtonType,
+			History
 			) {
 	"use strict";
 
@@ -63,10 +66,12 @@ sap.ui.define([
 
 					let oTree = { type: []};
 					const aImporting = oData.results.filter((oResult)=>{ return oResult.Paramtype === 'I' });
-					oTree.type.push({
-						name: 'Import',
-						type: this._getDataParameters(aImporting)
-					});
+					if(aImporting.length > 0){
+						oTree.type.push({
+							name: 'Import',
+							type: this._getDataParameters(aImporting)
+						});
+					}
 
 					const exporting = oData.results.filter((oResult)=>{ return oResult.Paramtype === 'E' });
 					oTree.type.push({
@@ -213,7 +218,9 @@ sap.ui.define([
 			if (sPreviousHash !== undefined) {
 				window.history.back();
 			} else {
-				this.getOwnerComponent().getRouter().navTo("DetalheInterface");
+				this.getOwnerComponent().getRouter().navTo("DetalheInterface", {
+					sId: this.ViewId
+				});
 			}
 		},
 

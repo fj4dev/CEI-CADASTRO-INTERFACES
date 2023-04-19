@@ -10,7 +10,8 @@ sap.ui.define([
     "sap/m/ButtonType",
 	"sap/m/SearchField",
     "sap/m/MessageBox",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/ui/core/routing/History"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -27,7 +28,8 @@ sap.ui.define([
             ButtonType,
             SearchField,
             MessageBox,
-            MessageToast
+            MessageToast,
+            History
 
         ) {
         "use strict";

@@ -7,7 +7,8 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
     "sap/m/Token",
 	"sap/m/SearchField",
-    "sap/m/MessageBox"
+    "sap/m/MessageBox",
+    "sap/ui/core/routing/History"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -21,7 +22,8 @@ sap.ui.define([
             FilterOperator,
             Token,
             SearchField,
-            MessageBox
+            MessageBox,
+            History
 
         ) {
         "use strict";

@@ -7,7 +7,7 @@
 	height="100%"
 	busyIndicatorDelay="0"
     >
-        <Page id="DetalheRfc" navButtonPress="onNavBack" >
+        <Page id="DetalheRfc" navButtonPress="onNavBack" showNavButton="true">
             <ObjectHeader
                 id="oh1"
                 responsive="false"

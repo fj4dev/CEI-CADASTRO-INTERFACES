@@ -6,7 +6,7 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m"
 	>
-    <Page id="Interface" navButtonPress="onNavBack">
+    <Page id="Interface" navButtonPress="onNavBack" showNavButton="true">
       <VBox id="box" class="sapUiSmallMargin">
 		<f:SimpleForm id="SimpleFormDisplay354wideDual"
 			editable="false"

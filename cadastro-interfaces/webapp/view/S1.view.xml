@@ -16,7 +16,7 @@
                         search="onSearch" 
                         showFilterConfiguration="false"
                         showGoOnFB="true"
-                        filterBarExpanded="false"
+                        filterBarExpanded="true"
                         showClearOnFB="true"
                         clear="onReset"
                     >
@@ -35,7 +35,7 @@
                             </fb:control>
                         </fb:FilterGroupItem>
 
-                        <fb:FilterGroupItem id="GrpItemInterface" groupName="__$INTERNAL$" name="A" label="Interface" visibleInFilterBar="true">
+                        <fb:FilterGroupItem id="GrpItemInterface" groupName="__$INTERNAL$" name="A" label=" Id. Interface" visibleInFilterBar="true">
                             <fb:control>
                                 <Input
                                     valueHelpOnly="true" 
@@ -47,7 +47,37 @@
                                 />
                             </fb:control>
                         </fb:FilterGroupItem>
-                        			
+                        <fb:FilterGroupItem
+                            id="GrpItemInterfaceIntfName" 
+                            groupName="__$INTERNAL$"
+                            name="IntName"
+                            label="Nome Interface"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Input 
+                                    id="InputItemInterfaceIntfName" 
+                                    name="IntName" 
+                                    submit="onEnterFilterField"
+                                />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                        <fb:FilterGroupItem
+                            id="GrpItemInterfaceRfcExt" 
+                            groupName="__$INTERNAL$"
+                            name="RfcExt"
+                            label="RFC Cliente"
+                            visibleInFilterBar="true"
+                        >
+                            <fb:control>
+                                <Input
+                                 id="InputemInterfaceRfcCliente" 
+                                 name="RfcExt" 
+                                 submit="onEnterFilterField"
+                                />
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
                     </fb:filterGroupItems>				
     
                 </fb:FilterBar>		
