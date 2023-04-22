@@ -74,10 +74,12 @@ sap.ui.define([
 					}
 
 					const exporting = oData.results.filter((oResult)=>{ return oResult.Paramtype === 'E' });
-					oTree.type.push({
-						name: 'Export',
-						type: this._getDataParameters(exporting)
-					});
+					if(exporting.length > 0){
+						oTree.type.push({
+							name: 'Export',
+							type: this._getDataParameters(exporting)
+						});
+					}
 
 					const changing = oData.results.filter((oResult)=>{ return oResult.Paramtype === 'C' });
 					if(changing.length > 0){
@@ -118,6 +120,7 @@ sap.ui.define([
 			let aStructData = [];
 			for (let oList of aList) {
 
+				aStructData = [];
 				// Verifica se o campo pertence a uma estrutura
 				if(oList.FieldFromStruc){
 					continue;
