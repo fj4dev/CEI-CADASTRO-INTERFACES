@@ -86,9 +86,7 @@ sap.ui.define([
             onPressReject: function(oEvent) {
 
                 this.getView().unbindElement("");
-			    this.getOwnerComponent().getRouter().navTo("DetalheInterface", {
-                     sId: this.ViewId
-                     });
+			    this.onNavBack();
 
                 
             },
@@ -129,18 +127,18 @@ sap.ui.define([
 			    const sPath = oContext.getPath();
 			    const oLine = oContext.getModel().getProperty(sPath);
                 const sIntLimiteTemp = this.getView().byId("IdTextLimiteTempoInterfaceCEI").getValue();
-                const sArea = this.getView().byId("IdTextAreaInterfaceCEI").getValue();
-                const sRfcExt = this.getView().byId("IdTextInterfaceCliente").getValue();
-                const sEndpoint = this.getView().byId("IdTextEndpoint").getValue();
-                const sOrigem= this.getView().byId("ComboBoxOrigem").getSelectedKey();
-                const sDestino= this.getView().byId("ComboBoxDestino").getSelectedKey();
-                const sProject= this.getView().byId("IdTextlProject").getValue();
-                const sOauthUser= this.getView().byId("IdTextoAuthUser").getValue();
-                const sPassword= this.getView().byId("IdTextoPassword").getValue();
-                const sTokenUrl= this.getView().byId("IdTextoAuthLinkTokenCode").getText();
-                const sOauthToken= this.getView().byId("IdTextoTokenCode").getValue();
-                const sIntName= this.getView().byId("IdLabelTextInterfaceName").getValue();
-                const sIntDesc= this.getView().byId("IdTextDescricaoInterface").getValue();
+                const sArea          = this.getView().byId("IdTextAreaInterfaceCEI").getValue();
+                const sRfcExt        = this.getView().byId("IdTextInterfaceCliente").getValue();
+                const sEndpoint      = this.getView().byId("IdTextEndpoint").getValue();
+                const sOrigem        = this.getView().byId("ComboBoxOrigem").getSelectedKey();
+                const sDestino       = this.getView().byId("ComboBoxDestino").getSelectedKey();
+                const sProject       = this.getView().byId("IdTextlProject").getValue();
+                const sOauthUser     = this.getView().byId("IdTextoAuthUser").getValue();
+                const sPassword      = this.getView().byId("IdTextoPassword").getValue();
+                const sTokenUrl      = this.getView().byId("IdTextoAuthLinkTokenCode").getText();
+                const sOauthToken    = this.getView().byId("IdTextoTokenCode").getValue();
+                const sIntName       = this.getView().byId("IdLabelTextInterfaceName").getValue();
+                const sIntDesc       = this.getView().byId("IdTextDescricaoInterface").getValue();
 
                 const oPayload = {
                     IntLimiteTemp: sIntLimiteTemp,
@@ -155,7 +153,7 @@ sap.ui.define([
                     OauthToken: sOauthToken,
                     Endpoint: sEndpoint,
                     IntName: sIntName,
-                    IntDesc: sIntDesc
+                    IntDesc: sIntDesc 
                 }
 
                 const sPathToUpdate = this.getView().getModel().createKey("/InterfaceSet",{
@@ -180,9 +178,7 @@ sap.ui.define([
                                     this.oSuccessMessageDialog.destroy();
                                     this.getView().unbindElement("");
                                     this.UpdateFormModel(oPayload,oLine);
-                                    this.getOwnerComponent().getRouter().navTo("DetalheInterface", {
-                                        sId: this.ViewId
-                                    });
+                                    this.onNavBack();
                                 }.bind(this)
                             })
                         });
@@ -193,8 +189,18 @@ sap.ui.define([
                     },
 
 					error: (err) => {
+
                         this.getView().setBusy(false);
-						MessageBox.error(err.message);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
 					}
 				};
 
@@ -219,6 +225,18 @@ sap.ui.define([
                 oLine.IntName = oPayload.IntName; 
                 oLine.IntDesc = oPayload.IntDesc; 
                 oLine.Payload =  this.getView().byId("idTextAreaPayload").getValue( );
+                oLine.ProcessoEdi = oPayload.ProcessoEdi;     
+                oLine.VersaoEdi = oPayload.VersaoEdi;        
+                oLine.SenderEdi = oPayload.SenderEdi;        
+                oLine.ReceiverEdi = oPayload.ReceiverEdi;      
+                oLine.HostSftp = oPayload.HostSftp;         
+                oLine.PortSftp = oPayload.PortSftp;         
+                oLine.UserSftp = oPayload.UserSftp;         
+                oLine.PasswordSftp = oPayload.PasswordSftp;     
+                oLine.PathSftp = oPayload.PathSftp;         
+                oLine.PathProcessSftp = oPayload.PathProcessSftp;  
+                oLine.PathAppendSftp = oPayload.PathAppendSftp;   
+                
                 
             },
 
@@ -266,8 +284,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         this.getView().setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + e.message;
+                        }
+
+						MessageBox.error(sMessage);
                         
                     }
                 });
@@ -314,8 +341,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         oView.setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                     }
                 }
 
@@ -343,8 +379,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         oView.setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                     }
                 }
 
@@ -370,8 +415,56 @@ sap.ui.define([
                 if (sPreviousHash !== undefined) {
                     window.history.back();
                 } else {
-                    this.getOwnerComponent().getRouter().navTo("DetalheInterface");
+                    // Pressiona botão NavBack do shell
+                    sap.ui.getCore().byId("backBtn").firePress();
                 }
+            },
+
+            onChangeOrigem: function(oEvent) {
+
+                switch (oEvent.getParameter("newValue")) {
+
+                    case "REST":
+                        this._displaySection("ObjectPageSectionRestToRfc",true);
+                        break;
+                    default:
+                        this._displaySection("ObjectPageSectionRestToRfc",false);
+                        break;
+                }
+            },
+
+            onChangeDestino: function(oEvent) {
+
+                switch (oEvent.getParameter("newValue")) {
+
+                    case "SFTP":
+                        this._displaySection("ObjectPageSectionEdiSFTP",true);
+                        break;
+
+                    default:
+                        this._displaySection("ObjectPageSectionEdiSFTP",false);
+                        break;
+                }
+            },
+
+            _displaySection: function(sSectionName,sDispplay) {
+
+                const oPageSection = this.getView().byId(sSectionName);
+                const aFormData = oPageSection.getSubSections()[0].getBlocks()[0].getItems()[0].getContent();
+
+                for ( let oField of aFormData ){
+                    if(oField.sParentAggregationName === 'label') continue;
+                    
+                    try{
+                        oField.setValue("");
+                    } catch(e){
+                        oField.setText("");
+                    }
+                    
+                }
+
+                oPageSection.setVisible(sDispplay);
+
             }
 
         });

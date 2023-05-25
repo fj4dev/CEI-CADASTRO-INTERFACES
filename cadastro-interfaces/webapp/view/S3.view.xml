@@ -5,56 +5,326 @@
 	    xmlns:f="sap.ui.layout.form"
         xmlns:core="sap.ui.core"
         xmlns="sap.m"
+		xmlns:ux="sap.uxap"
     >
-    <Page id="Interface" navButtonPress="onNavBack" showNavButton="true">
-    <ObjectHeader
-        id="oh1"
-        responsive="false"
-        icon="sap-icon://share-2"
-        title="{IntName}"
-        backgroundDesign="Translucent"
-        class="sapUiResponsivePadding--header" >
-        <ObjectAttribute id="IdAttributeInterfaceId" title="Id" text="{IntId}" />
-        <ObjectAttribute id="IdAttributeInterfacDescr" title="Descrição" text="{IntDesc}" />  
-        <ObjectAttribute id="IdAttributeInterfacComp" title="Empresa" text="{CompanyName}" />  
-		<statuses>
-			<ObjectStatus
-				id="idObjectStatusInbound"
-				title="Inbound"
-				text="{Origem}"
-				icon="sap-icon://cause"
-				state="Warning"
-			/>
-			<ObjectStatus 
-				id="idObjectStatusOutbound"
-				title="Outbound"
-				text="{Destino}"
-				icon="sap-icon://action"
-				state="Success"
-			/>
-		</statuses>
-    </ObjectHeader>
-      <VBox id="box" class="sapUiSmallMargin">
-		<f:SimpleForm id="SimpleFormDisplay354wideDual"
-			editable="false"
-			layout="ResponsiveGridLayout"
-			title="Modificar Interface"
-			labelSpanXL="4"
-			labelSpanL="3"
-			labelSpanM="3"
-			labelSpanS="8"
-			adjustLabelSpan="false"
-			emptySpanXL="0"
-			emptySpanL="0"
-			emptySpanM="0"
-			emptySpanS="0"
-			columnsXL="1"
-			columnsL="1"
-			columnsM="1"
-			singleContainerFullSize="false" >
-            <f:toolbar>
-				<Toolbar id="idToolbarForm">
-					<ToolbarSpacer id="idToolbarSpacer" />
+	<ux:ObjectPageLayout
+        id="ObjectPageLayout" 
+        showAnchorBarPopover="true" 
+        upperCaseAnchorBar="false"
+        headerContentPinnable="false"
+		showFooter="true"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter"	
+    >	
+		<!-- Header Page -->
+		<ux:headerTitle>
+			<ux:ObjectPageDynamicHeaderTitle id="ObjectPageDynamicHeaderTitle1">
+				<ux:heading>
+					<Title id="Title1" text="Modificar Interface"/>
+				</ux:heading>
+				<ux:actions>
+					
+				</ux:actions>
+			</ux:ObjectPageDynamicHeaderTitle>
+		</ux:headerTitle>
+
+		<!-- Object Header -->
+		<ux:headerContent>
+			<ObjectHeader
+					id="oh1"
+					responsive="false"
+					icon="sap-icon://share-2"
+					title="{IntName}"
+					backgroundDesign="Translucent"
+					class="sapUiResponsivePadding--header" >
+					<ObjectAttribute id="IdAttributeInterfaceId" title="Id" text="{IntId}" />
+					<ObjectAttribute id="IdAttributeInterfacDescr" title="Descrição" text="{IntDesc}" />  
+					<ObjectAttribute id="IdAttributeInterfacComp" title="Empresa" text="{CompanyName}" />  
+					<statuses>
+						<ObjectStatus
+							id="idObjectStatusInbound"
+							title="Inbound"
+							text="{Origem}"
+							icon="sap-icon://cause"
+							state="Warning"
+						/>
+						<ObjectStatus 
+							id="idObjectStatusOutbound"
+							title="Outbound"
+							text="{Destino}"
+							icon="sap-icon://action"
+							state="Success"
+						/>
+					</statuses>
+				</ObjectHeader>
+		</ux:headerContent>
+
+		<!-- Seções da página -->
+		<ux:sections>
+			<ux:ObjectPageSection id="ObjectPageSectionGeneral" titleUppercase="false" title="Dados Gerais">
+				<ux:subSections>
+				
+					<!-- Dados de origem destino da interface -->
+					<ux:ObjectPageSubSection id="ObjectPageSubSectionFluxoIntegracao" title="Fluxo da informação" titleUppercase="false">
+						<ux:blocks>
+							  <VBox id="VBoxFluxoIntegracao" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormFluxoIntegracao"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<Label id="IdLabelOgigem" text="Origem" />
+											<ComboBox 
+												id="ComboBoxOrigem" 
+												change="onChangeOrigem"
+												items="{
+													path: '/InterfaceTypeSet',
+													sorter: { path: 'Descricao' }
+												}">
+												<core:Item id="ItemOrigem" key="{Tipo}" text="{Tipo}" />
+											</ComboBox>
+											<Label id="IdLabelDestino" text="Destino" />
+											<ComboBox 
+												id="ComboBoxDestino" 
+												change="onChangeDestino"
+												items="{
+													path: '/InterfaceTypeSet',
+													sorter: { path: 'Tipo' }
+												}">
+												<core:Item id="ItemDestino" key="{Tipo}" text="{Tipo}" />
+											</ComboBox>
+				
+										</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+
+			<!-- Dados Interface -->
+			<ux:ObjectPageSection id="ObjectPageSectionInterfaceData" titleUppercase="false" title="RFC CEI">
+				<ux:subSections>
+					<ux:ObjectPageSubSection id="ObjectPageInterfaceData" title="RFC CEI" titleUppercase="false">
+						<ux:blocks>
+							  <VBox id="VBoxDadosInterfaceData" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormInterfaceData"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<Label id="IdLabelNomeInterface" text="Interface" />
+											<Input id="IdLabelTextInterfaceName" value="{IntName}" />
+											<Label id="IdLabelDescricaoInterface" text="Descrição" />
+											<Input id="IdTextDescricaoInterface" value="{IntDesc}" />
+											<Label id="IdLabelLimiteTempoInterfaceCEI" text="Limite de Tempo" />
+											<Input id="IdTextLimiteTempoInterfaceCEI" value="{IntLimiteTemp}" change="onChangeLImiteTempo"/>
+											<Label id="IdLabelAreaInterfaceCEI" text="Área" />
+											<Input id="IdTextAreaInterfaceCEI" value="{IntfArea}" />
+				
+										</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+			
+			<!-- Dados RFC CEI -->
+			<ux:ObjectPageSection id="ObjectPageSectionRfcCei" titleUppercase="false" title="RFC CEI">
+				<ux:subSections>
+					<ux:ObjectPageSubSection id="ObjectPageSubSectionRfcCei" title="RFC CEI" titleUppercase="false">
+						<ux:blocks>
+							  <VBox id="VBoxDadosRfcCei" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormRfcCei"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<Label id="IdLabelInterfaceCEI" text="RFC CEI" />
+											<Text id="IdTextInterfaceCEI" text="{RfcInt}" />
+											<Label id="IdLabelDescricaoInterfaceCEI" text="Descrição" />
+											<Text id="IdTextDescricaoInterfaceCEI" text="{RfcDesc}" />
+											<Label id="IdLabelFGroupInterfaceCEI" text="Grupo de Funções" />
+											<Text id="IdTextFGroupInterfaceCEI" text="{RfcFgroup}" />
+											<Label id="IdLabelFGroupDescrInterfaceCEI" text="Descrição" />
+											<Text id="IdTextFGroupDescrInterfaceCEI" text="{RfcFgroupDesc}" />
+				
+										</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+			
+			<!-- Dados RFC Cliente -->
+			<ux:ObjectPageSection id="ObjectPageSectionRfcCliente" titleUppercase="false" title="RFC Cliente">
+				<ux:subSections>
+					<ux:ObjectPageSubSection id="ObjectPageSubSectionRfcCliente" title="RFC Cliente" titleUppercase="false">
+						<ux:blocks>
+							  <VBox id="VBoxDadosRfcCliente" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormRfcCliente"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<!-- <core:Title id="IdTitleABAP" text="Dados da RFC CEI" /> -->
+											<Label id="IdLabelInterfaceCliente" text="Dados da RFC Cliente" />
+											<Input id="IdTextInterfaceCliente" value="{RfcExt}" change="onChangeInterfaceCliente"/>
+											<Label id="IdLabeDestlInterfaceCliente" text="Destination" />
+											<Text id="IdTextDestlInterfaceCliente" text="{Rfcdest}" />
+				
+										</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+
+			<!-- Dados do Endpoint -->
+			<ux:ObjectPageSection id="ObjectPageSectionEndpoint" titleUppercase="false" title="Endpoint">
+				<ux:subSections>
+					<ux:ObjectPageSubSection id="ObjectPageSubSectionEndpoint" title="Endpoint" titleUppercase="false">
+						<ux:blocks>
+							  <VBox id="VBoxDadosEndpoint" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormEndpoint"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<Label id="IdLabeEndpoint" text="Endpoint" />
+											<Input id="IdTextEndpoint" value="{Endpoint}" />
+										</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+
+			<!-- Dados oAuth (REST => RFC) -->
+			<ux:ObjectPageSection
+				id="ObjectPageSectionRestToRfc" 
+			 	titleUppercase="false" 
+				title="Dados Serviço Rest"
+				visible="{= ${Origem} === 'REST' ? true : false  }"
+			>
+				<ux:subSections>
+					<ux:ObjectPageSubSection 
+						id="ObjectPageSubSectionRestToRfc" 
+						title="Dados Serviço Rest" 
+						titleUppercase="false"
+					>
+						<ux:blocks>
+							  <VBox id="VBoxDadosRestToRfc" class="sapUiSmallMargin">
+							  		<f:SimpleForm 
+										id="FormRestToRfc"
+										editable="false"
+										layout="ResponsiveGridLayout"
+										labelSpanXL="4"
+										labelSpanL="2"
+										labelSpanM="2"
+										labelSpanS="8"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="1"
+										columnsL="1"
+										columnsM="1"
+										singleContainerFullSize="false" >
+											<Label id="IdLabelProject" text="Project SEGW" />
+											<Input id="IdTextlProject" value="{Project}" change="onChangeProject"/>
+											<Label id="IdLabeloAuthUser" text="User oAuth" />
+											<Input id="IdTextoAuthUser" value="{OauthUser}" change="onChangeOauthUser"/>
+											<Label id="IdLabeloAuthPwd" text="Password oAuth" />
+											<Input id="IdTextoPassword" value="{Password}" change="onChangePassWord" type="Password"/>
+											<Label id="IdLabelUrlTokenCode" text="Link geração Código segurança" />
+											<Link 
+												id="IdTextoAuthLinkTokenCode" 
+												text="{TokenUrl}" 
+												href="{TokenUrl}" 
+												target="_blank" 
+												tooltip="Abra em uma janela anonima"
+												width="100%"
+											/>
+											<Label id="IdLabeloAuthLinkPayload" text="Payload" />				
+											<TextArea 
+												editable="false" 
+												id="idTextAreaPayload" 
+												valueState="Warning" 
+												value="{Payload}"
+												width="100%"
+											/>
+											<Label id="IdLabelTokenCode" text="oAuth2" />	
+											<Input id="IdTextoTokenCode" value="{OauthToken}" />
+									</f:SimpleForm >
+							  </VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+		</ux:sections>
+		<ux:footer>
+			<OverflowToolbar id="GenOverflowToolbar">
+				<ToolbarSpacer id="idToolbarSpacer" />
 					<Button
 						id="ButtonConfirm"  
 						icon="sap-icon://decline" 
@@ -69,96 +339,7 @@
 						type="Accept"
 						press="onPressAcept"
 					/>
-				</Toolbar>
-			</f:toolbar>
-			<f:content>
-
-				<!-- Dados de origem destino da interface -->
-				<core:Title id="IdTitleOrigemDest" text="Fluxo da informação" />
-				<Label id="IdLabelOgigem" text="Origem" />
-				<ComboBox 
-					id="ComboBoxOrigem" 
-					items="{
-						path: '/InterfaceTypeSet',
-						sorter: { path: 'Descricao' }
-					}">
-					<core:Item id="ItemOrigem" key="{Tipo}" text="{Tipo}" />
-				</ComboBox>
-				<Label id="IdLabelDestino" text="Destino" />
-				<ComboBox 
-					id="ComboBoxDestino" 
-					items="{
-						path: '/InterfaceTypeSet',
-						sorter: { path: 'Tipo' }
-					}">
-					<core:Item id="ItemDestino" key="{Tipo}" text="{Tipo}" />
-				</ComboBox>
-
-				<!-- Dados Interface -->
-				<core:Title id="IdTitleInterface" text="Dados da Interface" />
-				<Label id="IdLabelNomeInterface" text="Interface" />
-				<Input id="IdLabelTextInterfaceName" value="{IntName}" />
-				<Label id="IdLabelDescricaoInterface" text="Descrição" />
-				<Input id="IdTextDescricaoInterface" value="{IntDesc}" />
-				<Label id="IdLabelLimiteTempoInterfaceCEI" text="Limite de Tempo" />
-				<Input id="IdTextLimiteTempoInterfaceCEI" value="{IntLimiteTemp}" change="onChangeLImiteTempo"/>
-				<Label id="IdLabelAreaInterfaceCEI" text="Área" />
-				<Input id="IdTextAreaInterfaceCEI" value="{IntfArea}" />
-
-				<!-- Dados ABAP (CEI) -->
-				<core:Title id="IdTitleABAP" text="Dados da RFC CEI" />
-				<Label id="IdLabelInterfaceCEI" text="RFC CEI" />
-				<Text id="IdTextInterfaceCEI" text="{RfcInt}" />
-				<Label id="IdLabelDescricaoInterfaceCEI" text="Descrição" />
-				<Text id="IdTextDescricaoInterfaceCEI" text="{RfcDesc}" />
-				<Label id="IdLabelFGroupInterfaceCEI" text="Grupo de Funções" />
-				<Text id="IdTextFGroupInterfaceCEI" text="{RfcFgroup}" />
-                <Label id="IdLabelFGroupDescrInterfaceCEI" text="Descrição" />
-				<Text id="IdTextFGroupDescrInterfaceCEI" text="{RfcFgroupDesc}" />
-                
-
-				<!-- Dados ABAP (Cliente) -->
-				<core:Title id="IdTitleCLiente" text="Dados da RFC Cliente" />
-				<Label id="IdLabelInterfaceCliente" text="Dados da RFC Cliente" />
-				<Input id="IdTextInterfaceCliente" value="{RfcExt}" change="onChangeInterfaceCliente"/>
-				<Label id="IdLabeDestlInterfaceCliente" text="Destination" />
-                <Text id="IdTextDestlInterfaceCliente" text="{Rfcdest}" />
-
-				<!-- Dados Endpoint -->
-				<core:Title id="IdTitleEndpoint" text="Endpoint" />
-				<Label id="IdLabeEndpoint" text="Endpoint" />
-                <Input id="IdTextEndpoint" value="{Endpoint}" />
-
-				<!-- Dados SEGW e oAUTH-->
-				<core:Title id="IdTitleService" text="Dados do Serviço Rest CEI" />
-				<Label id="IdLabelProject" text="Project SEGW" />
-                <Input id="IdTextlProject" value="{Project}" change="onChangeProject"/>
-				<Label id="IdLabeloAuthUser" text="User oAuth" />
-                <Input id="IdTextoAuthUser" value="{OauthUser}" change="onChangeOauthUser"/>
-				<Label id="IdLabeloAuthPwd" text="Password oAuth" />
-                <Input id="IdTextoPassword" value="{Password}" change="onChangePassWord"/>
-				<Label id="IdLabelUrlTokenCode" text="Link geração Código segurança" />
-                <Link 
-					id="IdTextoAuthLinkTokenCode" 
-					text="{TokenUrl}" 
-					href="{TokenUrl}" 
-					target="_blank" 
-					tooltip="Abra em uma janela anonima"
-					width="100%"
-				/>
-				<Label id="IdLabeloAuthLinkPayload" text="Payload" />				
-				<TextArea 
-					editable="false" 
-					id="idTextAreaPayload" 
-					valueState="Warning" 
-					value="{Payload}"
-					width="100%"
-				/>
-				<Label id="IdLabelTokenCode" text="oAuth2" />	
-				<Input id="IdTextoTokenCode" value="{OauthToken}" />
-
-			</f:content>
-		</f:SimpleForm>
-	</VBox>
-    </Page>
+			</OverflowToolbar>
+		</ux:footer>
+	</ux:ObjectPageLayout>
 </mvc:View>

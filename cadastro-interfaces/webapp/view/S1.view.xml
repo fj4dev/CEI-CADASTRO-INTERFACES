@@ -7,7 +7,12 @@
     	xmlns:l="sap.ui.layout"
         xmlns:core="sap.ui.core"
     >
-    <Page id="Interfaces">
+    <Page 
+        id="Interfaces" 
+        floatingFooter="true"
+        showFooter="true"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter"
+    >
         <content>
             <l:VerticalLayout id="VertLayout" width="100%">
                 <fb:FilterBar
@@ -86,13 +91,6 @@
                 <headerToolbar>
                     <OverflowToolbar id="otbSubheader">
                         <Title id="IdTitleTable" text="{i18n>title}" level="H1" />
-                        <ToolbarSpacer id="IdToolbarSpacer"/>
-                        <Button
-                         id="IdCreateButton" 
-                         text="Criar Interface" 
-                         type="Ghost" 
-                         press="onPressCreate" 
-                         icon="sap-icon://create"/>
                     </OverflowToolbar>
                 </headerToolbar>
                 <items>
@@ -135,5 +133,18 @@
                 </columns>
             </Table>
         </content>
+        <footer>
+			<OverflowToolbar id="OverflowToolbar" visible="true">
+                <ToolbarSpacer id="ToolbarSpacer"/>
+                <Button
+                    id="IdCreateButton" 
+                    text="Criar Interface" 
+                    type="Ghost" 
+                    press="onPressCreate" 
+                    icon="sap-icon://create"
+                    visible="true"
+                />
+            </OverflowToolbar>
+		</footer>
     </Page>
 </mvc:View>

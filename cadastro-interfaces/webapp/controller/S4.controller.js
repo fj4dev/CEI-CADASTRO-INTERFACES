@@ -48,6 +48,7 @@ sap.ui.define([
             onCallCreate: function(oEvent){
 
                 this.ViewId = "";
+                this._displaySection("ObjectPageSectionRestToRfc",false);
             },
 
             onPressReject: function(oEvent) {
@@ -92,6 +93,7 @@ sap.ui.define([
                 this.getView().byId("IdTextDestlInterfaceCliente").setText("");
                 this.getView().byId("IdTextEndpoint").setValue("");
 
+                this._displaySection("ObjectPageSectionRestToRfc",false);
 
                 this.getView().unbindElement("");
 			    this.getOwnerComponent().getRouter().navTo("home");
@@ -200,8 +202,18 @@ sap.ui.define([
                     },
 
 					error: (err) => {
+
                         this.getView().setBusy(false);
-						MessageBox.error(err.message);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
 					}
 				};
 
@@ -250,8 +262,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         this.getView().setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                         
                     }
                 });
@@ -298,8 +319,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         this.getView().setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                         
                     }
                 });
@@ -351,8 +381,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         oView.setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                     }
                 }
 
@@ -380,8 +419,17 @@ sap.ui.define([
                     },
                     error: (err) => {
 
-                        MessageBox.information(err.message);
                         oView.setBusy(false);
+                        let sMessage = "";
+
+                        try{
+                            const oBjErr = JSON.parse(err.responseText);
+                            sMessage = oBjErr.error.message.value;
+                        } catch(e){
+                            sMessage = "Error: " + err.message;
+                        }
+
+						MessageBox.error(sMessage);
                     }
                 }
 
@@ -408,9 +456,50 @@ sap.ui.define([
                 if (sPreviousHash !== undefined) {
                     window.history.back();
                 } else {
-                    this.getOwnerComponent().getRouter().navTo("DetalheInterface");
+                    // Pressiona botão NavBack do shell
+                    sap.ui.getCore().byId("backBtn").firePress();
                 }
                 
-            }  
+            },
+
+            onChangeOrigem: function(oEvent) {
+
+                switch (oEvent.getParameter("newValue")) {
+
+                    case "REST":
+                        this._displaySection("ObjectPageSectionRestToRfc",true);
+                        break;
+
+                    default:
+                        this._displaySection("ObjectPageSectionRestToRfc",false);
+                        break;
+                }
+            },
+
+            onChangeDestino: function(oEvent) {
+
+            },
+
+            _displaySection: function(sSectionName,sDispplay) {
+
+                const oPageSection = this.getView().byId(sSectionName);
+                const aFormData = oPageSection.getSubSections()[0].getBlocks()[0].getItems()[0].getContent();
+
+                for ( let oField of aFormData ){
+                    if(oField.sParentAggregationName === 'label') continue;
+                    
+                    try{
+                        oField.setValue("");
+                    } catch(e){
+                        oField.setText("");
+                    }
+                    
+                }
+
+                oPageSection.setVisible(sDispplay);
+
+            }
+
+
         });
     });

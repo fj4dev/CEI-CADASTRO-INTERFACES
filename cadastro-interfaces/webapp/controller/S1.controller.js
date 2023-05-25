@@ -49,7 +49,7 @@ sap.ui.define([
                 .then((data) => {
 
                     //Esconder elementos em PRD
-                    this.getView().byId("IdCreateButton").setVisible(this.IsQualityEnv());
+                    //this.getView().byId("IdCreateButton").setVisible(this.IsQualityEnv());
 
                 });
 

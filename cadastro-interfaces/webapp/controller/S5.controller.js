@@ -218,13 +218,12 @@ sap.ui.define([
 		onNavBack: function () {
 			var sPreviousHash = History.getInstance().getPreviousHash();
 
-			if (sPreviousHash !== undefined) {
-				window.history.back();
-			} else {
-				this.getOwnerComponent().getRouter().navTo("DetalheInterface", {
-					sId: this.ViewId
-				});
-			}
+                if (sPreviousHash !== undefined) {
+                    window.history.back();
+                } else {
+                    // Pressiona botão NavBack do shell
+                    sap.ui.getCore().byId("backBtn").firePress();
+                }
 		},
 
 		IsQualityEnv: function() {

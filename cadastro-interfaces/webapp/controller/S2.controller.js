@@ -43,14 +43,13 @@ sap.ui.define([
                 const sPath = "/" + oEvent.getParameters().arguments.sId;
                 let oView = this.getView();
                 let oModel = oView.getModel();
-
                 oModel.metadataLoaded().then(  ()=> {
 
                     this.getView().bindElement({
                         path: sPath,
                         events: {
                             change:function(oEvent){
-
+                                
                             },
                             dataRequested: function() {
                                 oView.setBusy(true);
@@ -98,7 +97,8 @@ sap.ui.define([
                 if (sPreviousHash !== undefined) {
                     window.history.back();
                 } else {
-                    this.getOwnerComponent().getRouter().navTo("DetalheInterface");
+                    // Pressiona botão NavBack do shell
+                    sap.ui.getCore().byId("backBtn").firePress();
                 }
             }
            
