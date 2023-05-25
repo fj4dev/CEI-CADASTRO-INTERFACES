@@ -87,7 +87,11 @@
     
                 </fb:FilterBar>		
 	        </l:VerticalLayout>
-            <Table id="TableInterfaces" items="{/InterfaceSet}" itemPress="onItemPress">
+            <Table id="TableInterfaces"
+                 items="{/InterfaceSet}" 
+                 itemPress="onItemPress"
+                 fixedLayout="true"
+            >
                 <headerToolbar>
                     <OverflowToolbar id="otbSubheader">
                         <Title id="IdTitleTable" text="{i18n>title}" level="H1" />
@@ -101,6 +105,7 @@
 							<Text id="IntDesc" text="{IntDesc}" />
 							<Text id="RfcInt" text="{RfcInt}" />
 							<Text id="RfcDesc" text="{RfcDesc}" />
+                            <ObjectIdentifier id="IdTarget" title="{Origem}" text="{Destino}"/>
 						</cells>
 					</ColumnListItem>
                 </items>
@@ -128,6 +133,11 @@
                     <Column id="ColumnRfcDesc" popinDisplay="Inline" minScreenWidth="Phone">
 						<header>
 							<Label id="LabelRfcDesc" text="Descrição"/>
+						</header>
+					</Column>
+                    <Column id="ColumnIntfTargets" popinDisplay="Inline" minScreenWidth="Phone" width="5em">
+						<header>
+							<Label id="LabelIntfTargets" text="Origem/Destino"/>
 						</header>
 					</Column>
                 </columns>
