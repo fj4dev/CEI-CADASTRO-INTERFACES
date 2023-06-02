@@ -100,6 +100,19 @@ sap.ui.define([
                     // Pressiona botão NavBack do shell
                     sap.ui.getCore().byId("backBtn").firePress();
                 }
+            },
+
+            onPressEditSftp: function(oEvent) {
+
+                const sPath = oEvent.getSource().getBindingContext().getPath(); 
+                const oIntData = this.getView().getModel().getProperty(sPath);
+                const sBaseUrl = window.location.origin;
+                const sPathName = window.location.pathname;
+                const sHash = `#interfaceSFTP-display&/Id/InterfacesViewSet(CompanyCode='${oIntData.CompanyCode}',IntId='IntId='${oIntData.IntId}')`;
+                const url = sBaseUrl + sPathName + sHash;
+                window.open(url, '_blank');
+
+
             }
            
         });
