@@ -6,7 +6,7 @@
   "conn_user": "aramalho",
   "conn_password": "ramalho13",
   "abap_package": "ZCEI",
-  "abap_transport": "GWDK900349",
+  "abap_transport": "GWDK900392",
   "abap_bsp": "ZGW_INTF_APP",
   "abap_bsp_text": "Cadastro de Interfaces"
 }
