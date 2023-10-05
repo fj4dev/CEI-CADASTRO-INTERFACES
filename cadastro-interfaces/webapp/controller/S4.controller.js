@@ -334,10 +334,6 @@ sap.ui.define([
                     }
                 });
 
-
-
-
-
             },
 
             
@@ -497,9 +493,7 @@ sap.ui.define([
                 }
 
                 oPageSection.setVisible(sDispplay);
-
             }
-
 
         });
     });

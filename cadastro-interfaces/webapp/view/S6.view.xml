@@ -1,0 +1,221 @@
+<mvc:View 
+    controllerName="yellow.com.cadastrointerfaces.controller.S6"
+        xmlns:mvc="sap.ui.core.mvc" 
+        displayBlock="true"
+	    xmlns:f="sap.ui.layout.form"
+        xmlns:core="sap.ui.core"
+        xmlns="sap.m"
+		xmlns:ux="sap.uxap"
+		xmlns:t="sap.ui.table"
+		xmlns:ui="sap.ui.unified"
+		xmlns:dnd="sap.ui.core.dnd"
+		xmlns:control="DragNDrop.controls"
+    >
+	<ux:ObjectPageLayout
+        id="ObjectPageLayout" 
+        showAnchorBarPopover="true" 
+        upperCaseAnchorBar="false"
+        headerContentPinnable="false"
+		showFooter="true"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter"	
+    >	
+		<!-- Header Page -->
+		<ux:headerTitle>
+			<ux:ObjectPageDynamicHeaderTitle id="ObjectPageDynamicHeaderTitle1">
+				<ux:heading>
+					<Title id="Title1" text="Mapping da Interface"/>
+				</ux:heading>
+				<ux:actions>
+					
+				</ux:actions>
+			</ux:ObjectPageDynamicHeaderTitle>
+		</ux:headerTitle>
+
+		<!-- Object Header -->
+		<ux:headerContent>
+		</ux:headerContent>
+
+		<!-- Seções da página -->
+		<ux:sections>
+			<ux:ObjectPageSection id="ObjectPageSectionGeneral" titleUppercase="false">
+				<ux:subSections>
+				
+					<!-- Dados de origem destino da interface -->
+					<ux:ObjectPageSubSection id="ObjectPageSubSectionFluxoIntegracao" titleUppercase="true">
+						<ux:blocks>
+							<VBox id="VBoxUpload" class="sapUiSmallMargin">
+								<HBox id="HBoxUpload" class="sapUiSmallMargin" alignContent="End" >
+									<ui:FileUploader id="fileUploaderFS" multiple="false" value="{FileName}"  />
+									<Button id="BtnJsonUpload" text="Upload" type="Accept" press="onUploadFile"/>				  		
+								</HBox>
+
+							<HBox id="VBoxFluxoIntegracao" class="sapUiSmallMargin">
+								<t:TreeTable
+									id="TreeInbound"
+									selectionMode="Single"
+									enableColumnReordering="false"
+									cellClick="onCellClick"
+									rows="{
+										path:'InboundData>/', 
+										parameters: {
+											numberOfExpandedLevels: 1,
+											arrayNames:['Node']
+										}
+									}"
+								>
+									<t:dragDropConfig>
+										<dnd:DragInfo id="DragInfo" sourceAggregation="rows"/>
+									</t:dragDropConfig>
+									<t:rowSettingsTemplate >
+										<t:RowSettings 
+											id="RowSettingsInboundData" 
+											highlight="{= ${InboundData>IsMapped} === true ? 'Success' : 'None'}" 
+										/>
+									</t:rowSettingsTemplate>
+									<t:columns>
+										<t:Column id="ColumnInbound" label="Origem">
+											<t:template>
+												<Text id="TextInbound" text="{InboundData>Name}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="InboundGuid" width = "0px">
+											<t:template>
+												<Text id="InboundTextGuid" text="{InboundData>NodeGuid}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="InboundParentGuid" width = "0px">
+											<t:template>
+												<Text id="InboundTextParentGuid" text="{InboundData>ParentGuid}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="InboundNodePath" width = "0px">
+											<t:template>
+												<Text id="InboundTextNodePath" text="{InboundData>NodePath}" wrapping="false" />
+											</t:template>
+										</t:Column>
+									</t:columns>
+									
+								</t:TreeTable>
+								<t:TreeTable
+									id="TreeOutBound"
+									selectionMode="Single"
+									enableColumnReordering="false"
+									cellClick="onCellClick"
+									rows="{
+										path:'OutboundData>/', 
+										parameters: {
+											numberOfExpandedLevels: 2,
+											arrayNames:['Node']
+										}
+									}"
+								>
+										<t:dragDropConfig>
+											<dnd:DragInfo id="DragInfoTarget" sourceAggregation="rows"/>
+										</t:dragDropConfig>
+										<t:rowSettingsTemplate >
+											<t:RowSettings 
+												id="RowSettingsOutboundData" 
+												highlight="{= ${OutboundData>IsMapped} === true ? 'Success' : 'None'}" 
+											/>
+										</t:rowSettingsTemplate>
+										<t:columns>
+										<t:Column id="ColumnOutBound" label="Destino">
+											<t:template>
+												<Text id="TextOutBound" text="{OutboundData>Name}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="OutBoundGuid" width = "0px">
+											<t:template>
+												<Text id="OutBoundTextGuid" text="{OutboundData>NodeGuid}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="OutBoundParentGuid" width = "0px">
+											<t:template>
+												<Text id="OutBoundTextParentGuid" text="{OutboundData>ParentGuid}" wrapping="false" />
+											</t:template>
+										</t:Column>
+										<t:Column id="OutBoundNodePath" width = "0px">
+											<t:template>
+												<Text id="OutBoundTextNodePath" text="{OutboundData>NodePath}" wrapping="false" />
+											</t:template>
+										</t:Column>
+									</t:columns>
+								</t:TreeTable>
+							  </HBox>
+							  <VBox id="VBOXTableMapping" class="sapUiSmallMargin">
+							  	<t:Table
+										id="TableMapping"
+										rows="{Mapping>/}"
+										selectionMode="None"
+										visibleRowCount="5"
+										showNoData="false"
+								>
+									<t:extension>
+										<OverflowToolbar id="OverflowToolbar">
+											<ToolbarSpacer id="ToolbarSpacer"/>
+											<Button id="BtnAccept" text="Confirmar" type="Accept" icon='sap-icon://accept' press="onAccept"/>
+											<Button id="BtnReject" text="Cancelar" type="Reject" icon='sap-icon://decline' press="onReject"/>
+											<Button id="BtnDelete" text="Eliminar" type="Negative" icon='sap-icon://delete' press="onDelete"/>
+										</OverflowToolbar>
+									</t:extension>
+										<t:dragDropConfig>
+											<dnd:DropInfo  id="DropInfo" drop="onDrop"/>
+										</t:dragDropConfig>
+										<t:columns>
+											<t:Column id="ColumnSource">
+												<Label id="LabelSource" text="Origem" />
+												<t:template>
+													<Text id="TextSource" text="{Mapping>SourceNodePath}" wrapping="false" />
+												</t:template>
+											</t:Column>
+											<t:Column id="ColumnSourceGuid" width="0px">
+												<t:template>
+													<Text id="TextSourceGuid" text="{Mapping>SourceGuid}" wrapping="false" />
+												</t:template>
+											</t:Column>
+											<t:Column id="ColumnTarget">
+												<Label id="LabelTarget" text="Destino" />
+												<t:template>
+													<Text id="TextTarget" text="{Mapping>TargetNodePath}" wrapping="false" />
+												</t:template>
+											</t:Column>
+											<t:Column id="ColumnTargetGuid" width="0px">
+												<t:template>
+													<Text id="TextTargetGuid" text="{Mapping>TargetGuid}" wrapping="false" />
+												</t:template>  
+											</t:Column>
+											<t:Column id="ColumnMappingGuid" width="0px">
+												<t:template>
+													<Text id="TextMappingGuid" text="{Mapping>MappingGuid}" wrapping="false" />
+												</t:template>  
+											</t:Column>
+										</t:columns>
+									</t:Table>
+								</VBox>
+							</VBox>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+		</ux:sections>
+		<ux:footer>
+			<OverflowToolbar id="GenOverflowToolbar">
+				<ToolbarSpacer id="idToolbarSpacer" />
+					<Button
+					id="ButtonConfirm"  
+					icon="sap-icon://decline" 
+					text="Cancelar" 
+					type="Reject"
+					press="onPressReject"
+				/>
+				<Button 
+					id="ButtonConfirmar"  
+					icon="sap-icon://accept" 
+					text="Confirmar" 
+					type="Accept"
+					press="onPressAccept"
+				/>
+			</OverflowToolbar>
+		</ux:footer>
+	</ux:ObjectPageLayout>
+</mvc:View>

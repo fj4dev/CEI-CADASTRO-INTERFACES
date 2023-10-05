@@ -309,6 +309,14 @@
 			<OverflowToolbar id="GenOverflowToolbar">
 				<ToolbarSpacer id="ToolbarSpacer" />
 				<Button 
+					id="ButtonMapping" 
+					icon="sap-icon://action-settings" 
+					text="Mapping" 
+					press="onPressMapping"
+					type="Ghost"	
+					visible="{= ${Origem} === 'REST' || ${Destino} === 'REST' ? true : false}"
+				/>
+				<Button 
 					id="ButtonEditSftp" 
 					icon="sap-icon://action-settings" 
 					text="Configurações SFTP" 

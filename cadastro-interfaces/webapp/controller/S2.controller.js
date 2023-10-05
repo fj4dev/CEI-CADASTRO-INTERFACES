@@ -113,6 +113,14 @@ sap.ui.define([
                 window.open(url, '_blank');
 
 
+            },
+
+            onPressMapping: function(oEvent){
+
+                   // @type sap.m.routing.Router
+                   let oRouter = this.getOwnerComponent().getRouter(); 
+                   oRouter.navTo("Mapping", { sId: this._CreateKey(oEvent) } );
+
             }
            
         });
