@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZYLW_CADASTRO_INTERFACES_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Interface" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="IntId"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntName" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Nome da interface" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcExt" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="RFC Cliente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcInt" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="RFC Interna" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcDesc" Type="Edm.String" Nullable="false" MaxLength="74" sap:unicode="false" sap:label="Short text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcFgroup" Type="Edm.String" Nullable="false" MaxLength="26" sap:unicode="false" sap:label="Func.group name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcFgroupDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Short text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntLimiteTemp" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Tempo limite" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntfArea" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Company Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endpoint" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Endpoint" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destination" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rfcdest" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Destination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Project" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Origem integração" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Origem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Destino integração" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destino" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="URL links if resolution is UI based" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TokenUrl" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="oAuth Token" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthToken" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="oAuth Token" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Payload" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Request" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Company" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rfcdest" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Destination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Message type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:unicode="false" sap:label="Message text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InterfaceType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tipo"/>
+                </Key>
+                <Property Name="Tipo" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Tipo de Integração" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Descricao" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Descrição do Tipo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="UrlToken" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Project"/>
+                    <PropertyRef Name="OauthUser"/>
+                </Key>
+                <Property Name="Project" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Project" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TokenUrl" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="URL links if resolution is UI based" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="OauthPayload" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Project"/>
+                    <PropertyRef Name="OauthUser"/>
+                    <PropertyRef Name="Password"/>
+                </Key>
+                <Property Name="Project" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Project" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Payload" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Request" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="ExternalFile" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="IntId"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Guid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileType" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="File type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Response" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InCompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InIntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" MaxLength="250" sap:unicode="false" sap:label="Editing program" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_filetree" Relationship="ZYLW_CADASTRO_INTERFACES_SRV.assoc_ext_file_tree" FromRole="FromRole_assoc_ext_file_tree" ToRole="ToRole_assoc_ext_file_tree"/>
+            </EntityType>
+            <EntityType Name="Mapping" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="MappingGuid"/>
+                    <PropertyRef Name="SourceGuid"/>
+                    <PropertyRef Name="TargetGuid"/>
+                </Key>
+                <Property Name="MappingGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Node Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TargetGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TargetName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Node Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceGuidIn" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TargetGuidIn" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SourceNodePath" Type="Edm.String" Nullable="false" MaxLength="8192" sap:unicode="false" sap:label="SLD Agent: Replacement for type &quot;string&quot; in releases &lt; 4.5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TargetNodePath" Type="Edm.String" Nullable="false" MaxLength="8192" sap:unicode="false" sap:label="SLD Agent: Replacement for type &quot;string&quot; in releases &lt; 4.5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="InterfaceVH" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="IntId"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Password" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Password" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntName" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Nome da interface" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Origem" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Origem integração" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destino" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="Destino integração" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntDesc" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcExt" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="RFC Cliente" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TokenUrl" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="URL links if resolution is UI based" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthToken" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="oAuth Token" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcInt" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="RFC Interna" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Payload" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Request" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcDesc" Type="Edm.String" Nullable="false" MaxLength="74" sap:unicode="false" sap:label="Short text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcFgroup" Type="Edm.String" Nullable="false" MaxLength="26" sap:unicode="false" sap:label="Func.group name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="RfcFgroupDesc" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Short text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntLimiteTemp" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Tempo limite" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntfArea" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Company Area" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Endpoint" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Endpoint" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Destination" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rfcdest" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Destination" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Project" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Project" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyName" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Name 1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="OauthUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="RfcDetail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="IntId"/>
+                </Key>
+                <Property Name="Parameter" Type="Edm.String" MaxLength="132" sap:unicode="false" sap:label="Associated Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Typing" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Typing" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="132" sap:unicode="false" sap:label="Associated Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Paramtype" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Parameter type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Paramtypedesc" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Descrição" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TableTypename" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Table type name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="StrucTypename" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Table Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldTypename" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Field Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FieldFromStruc" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Inbound" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NodeGuid"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Node Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HierarchyLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Hierarchy Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentNodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Parent Node ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MappingGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodePath" Type="Edm.String" Nullable="false" MaxLength="8192" sap:unicode="false" sap:label="SLD Agent: Replacement for type &quot;string&quot; in releases &lt; 4.5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsMapped" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Oubound" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NodeGuid"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Node Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HierarchyLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Hierarchy Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentNodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Parent Node ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MappingGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodePath" Type="Edm.String" Nullable="false" MaxLength="8192" sap:unicode="false" sap:label="SLD Agent: Replacement for type &quot;string&quot; in releases &lt; 4.5" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsMapped" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="TRUE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="FileTree" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CompanyCode"/>
+                    <PropertyRef Name="IntId"/>
+                    <PropertyRef Name="NodeId"/>
+                    <PropertyRef Name="HierarchyLevel"/>
+                </Key>
+                <Property Name="CompanyCode" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IntId" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="ID para interfaces" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Node Id" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HierarchyLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Hierarchy Level" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentNodeId" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="Parent Node ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NodeGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ParentGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MappingGuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="UUID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="assoc_ext_file_tree" sap:content-version="1">
+                <End Type="ZYLW_CADASTRO_INTERFACES_SRV.ExternalFile" Multiplicity="1" Role="FromRole_assoc_ext_file_tree"/>
+                <End Type="ZYLW_CADASTRO_INTERFACES_SRV.FileTree" Multiplicity="*" Role="ToRole_assoc_ext_file_tree"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_ext_file_tree">
+                        <PropertyRef Name="IntId"/>
+                        <PropertyRef Name="CompanyCode"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_ext_file_tree">
+                        <PropertyRef Name="IntId"/>
+                        <PropertyRef Name="CompanyCode"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZYLW_CADASTRO_INTERFACES_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="InterfaceSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Interface" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CompanySet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Company" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReturnCollection" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Return" sap:content-version="1"/>
+                <EntitySet Name="InterfaceTypeSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.InterfaceType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="UrlTokenSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.UrlToken" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OauthPayloadSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.OauthPayload" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ExternalFileSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.ExternalFile" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MappingSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Mapping" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InterfaceVHSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.InterfaceVH" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="RfcDetailSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.RfcDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InboundSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Inbound" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OuboundSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.Oubound" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FileTreeSet" EntityType="ZYLW_CADASTRO_INTERFACES_SRV.FileTree" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_ext_file_treeSet" Association="ZYLW_CADASTRO_INTERFACES_SRV.assoc_ext_file_tree" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ExternalFileSet" Role="FromRole_assoc_ext_file_tree"/>
+                    <End EntitySet="FileTreeSet" Role="ToRole_assoc_ext_file_tree"/>
+                </AssociationSet>
+                <FunctionImport Name="ConfirmarRfc" ReturnType="ZYLW_CADASTRO_INTERFACES_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="GET">
+                    <Parameter Name="RfcExt" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Rfcdest" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="BuscarNovaRfcCei" ReturnType="ZYLW_CADASTRO_INTERFACES_SRV.Return" EntitySet="ReturnCollection" m:HttpMethod="GET">
+                    <Parameter Name="CompanyCode" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="http://vm04.4hub.cloud:50300/sap/opu/odata/sap/ZYLW_CADASTRO_INTERFACES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://vm04.4hub.cloud:50300/sap/opu/odata/sap/ZYLW_CADASTRO_INTERFACES_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
