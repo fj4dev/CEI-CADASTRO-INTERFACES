@@ -180,7 +180,7 @@ sap.ui.define([
                                     this.oSuccessMessageDialog.destroy();
                                     this.getView().unbindElement("");
                                     this.UpdateFormModel(oPayload,oLine);
-                                    this.onNavBack();
+                                    this.onNavToHome();
                                 }.bind(this)
                             })
                         });
@@ -209,6 +209,14 @@ sap.ui.define([
                 this.getView().setBusy(true);
                 this.getView().getModel().update(sPathToUpdate,oPayload,mParameters);
                 
+            },
+
+            onNavToHome: function(){
+
+                // @type sap.m.routing.Router
+                let oRouter = this.getOwnerComponent().getRouter(); 
+                oRouter.navTo("home");
+
             },
 
             UpdateFormModel: function(oPayload, oLine) {

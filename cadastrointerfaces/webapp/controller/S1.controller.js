@@ -79,6 +79,20 @@ sap.ui.define([
 
             onSearch: function(oEvent) {
 
+                let aFilters = this.getFilters();
+                let oList = this.getView().byId("TableInterfaces");
+                let oBinding = oList.getBinding("items");
+
+                if(aFilters.length > 0){
+                    oBinding.filter(aFilters);
+                }
+                
+                this.getView().getModel().refresh(true);
+                
+            },
+
+            getFilters: function(){
+
                 let aFilters = [];
                 const sCompanyCode = this.getView().byId("ComboBoxCompany").getSelectedKey();
                 const sInterfaceId= this.getView().byId("InputValueHelpInterface").getValue();
@@ -126,15 +140,9 @@ sap.ui.define([
                     }));
                 }
 
-                let oList = this.getView().byId("TableInterfaces");
-                let oBinding = oList.getBinding("items");
+                return aFilters;
 
-                if(aFilters.length > 0){
-                    oBinding.filter(aFilters);
-                }
-                
-                this.getView().getModel().refresh(true);
-                
+
             },
 
             openInterfaceVH: function(oEvent) {
